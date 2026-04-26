@@ -1,5 +1,5 @@
 <?php
-header('Content-Type: text/plain'); // Retorna texto puro, ideal para API
+header('Content-Type: text/plain'); // Retorna texto puro
 
 // ----------------------------------------------------
 // // FUNÇÃO DE CONEXÃO ROBUSTA
@@ -46,18 +46,18 @@ try {
     // Tenta a conexão com o banco usando a função robusta
     $conn = connectDB();
 
-    // Sanitiza e coleta os dados dos campos 'nome' e 'pontos' (esperados pelo Python)
+    // Sanitiza e coleta os dados dos campos 'nome' e 'pontos'
     $nome = trim($_POST['nome'] ?? '');
     // Garante que 'pontos' seja um inteiro, se nao for enviado ou for invalido, sera 0
     $pontos = (int)($_POST['pontos'] ?? 0); 
 
     if ($nome === '' || $pontos < 0) {
-        http_response_code(400); // Bad Request
+        http_response_code(400); 
         echo "Erro: Dados invalidos. Nome nao pode ser vazio ou pontos negativos.";
         exit;
     }
 
-    // Insere na tabela 'registros_partida' (consistente com index.php)
+    // Insere na tabela 'registros_partida'
     $stmt = $conn->prepare("
         INSERT INTO registros_partida (nome_jogador, pontos)
         VALUES (:nome, :pontos)
@@ -67,12 +67,12 @@ try {
     $stmt->bindParam(":pontos", $pontos, PDO::PARAM_INT);
     $stmt->execute();
 
-    http_response_code(200); // OK
+    http_response_code(200);
     echo "Registro inserido com sucesso!";
 
 } catch (Exception $e) { // Captura Exception, que inclui PDOException
     // Se ocorrer um erro no banco ou na conexão
     error_log("Erro no servidor: " . $e->getMessage());
-    http_response_code(500); // Internal Server Error
+    http_response_code(500); 
     echo "Erro no servidor ao processar o banco de dados. Detalhe: " . $e->getMessage();
 }
