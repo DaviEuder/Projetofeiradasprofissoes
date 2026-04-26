@@ -1,7 +1,7 @@
 FROM php:8.2-apache
 
 # 1. Instala bibliotecas de desenvolvimento do PostgreSQL
-# (Este passo já está funcionando)
+
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     && rm -rf /var/lib/apt/lists/*
