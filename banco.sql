@@ -1,0 +1,8 @@
+CREATE TABLE registros_partida (
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    nome_jogador VARCHAR(100) NOT NULL,
+    pontos INTEGER DEFAULT 0,
+    data_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+DELETE FROM registros_partida 
+WHERE pontos > 100;
