@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Placar de Líderes - Desafio do Basquete</title>
-    <!-- Carrega Tailwind CSS para estilização moderna e responsiva -->
+    <!-- Carrega Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Configuração da Fonte Inter e cores para o Tailwind -->
     <script>
@@ -26,14 +26,14 @@
         }
     </script>
     <style>
-        /* Estilo para garantir a fonte Inter e o fundo escuro */
+       
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0F172A; /* Azul escuro quase preto */
+            background-color: #0F172A;
         }
-        /* Classe de animação para os pódios */
+        
         .podium-shine {
-            /* Animação suave para o 1º lugar */
+           
             animation: shine 3s infinite alternate; 
         }
         @keyframes shine {
@@ -97,7 +97,6 @@ try {
     $conn = connectDB();
     $scoreboard = getScoreboard($conn);
     
-    // A parte de criação de testes automáticos foi removida
     // O código agora APENAS LÊ os dados.
 
 } catch (Exception $e) { 
